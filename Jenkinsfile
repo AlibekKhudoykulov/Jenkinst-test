@@ -1,5 +1,6 @@
 pipeline {
     agent any
+    stages{
         stage('Build') {
             steps {
                 // Compile and package the Maven project
@@ -14,3 +15,4 @@ pipeline {
             }
         }
     }
+}
