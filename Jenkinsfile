@@ -25,6 +25,7 @@ pipeline {
                 bat 'mvn clean package'
             }
         }
+       }
         post {
             always {
                 publishCoverage(
@@ -32,6 +33,6 @@ pipeline {
                     sourceFileResolver: sourceFiles('**/src/main/java')
                 )
             }
-        }
+
     }
 }
