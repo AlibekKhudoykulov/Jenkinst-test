@@ -3,9 +3,7 @@ pipeline {
         tools {
         // Define the name of the Maven installation configured in Jenkins
         maven 'Maven-3.9.5'
-         sonarqubeScanner installations: [
-            'Sonarqube' // Replace 'Sonarqube' with your actual SonarQube Scanner installation name
-        ]    }
+      }
     
 
     stages{
@@ -29,9 +27,11 @@ pipeline {
         }
         stage('SonarQube Analysis'){
             steps{
+             def scannerHome = tool 'sonarqube';
              withSonarQubeEnv('sonarqube-10.2.1'){
+                bat "${scannerHome}/bin/sonar-scanner"
                  bat 'mvn sonar:sonar'
-             }   
+             }
         }
        }
     }
