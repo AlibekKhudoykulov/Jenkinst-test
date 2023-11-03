@@ -33,7 +33,7 @@ pipeline {
                 publishCoverage(adapters: [jacocoAdapter('**/site/jacoco/jacoco.xml')])
             }
         }
-    
+}
     post {
     success {
         script {
@@ -44,5 +44,4 @@ pipeline {
             }
         }
     }
-}
 }
