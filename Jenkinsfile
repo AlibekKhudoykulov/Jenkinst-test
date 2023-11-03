@@ -25,5 +25,18 @@ pipeline {
                 bat 'mvn clean package'
             }
         }
+         stage('Publish Code Coverage') {
+                    steps {
+                        // Archive JaCoCo reports for display in Jenkins
+                        publishHTML(target: [
+                            allowMissing: false,
+                            alwaysLinkToLastBuild: false,
+                            keepAll: true,
+                            reportDir: 'target/site/jacoco',
+                            reportFiles: 'jacoco.csv',
+                            reportName: 'JaCoCo Code Coverage'
+                        ])
+                    }
+          }
     }
 }
