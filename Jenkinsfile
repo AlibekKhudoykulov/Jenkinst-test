@@ -3,6 +3,7 @@ pipeline {
         tools {
         // Define the name of the Maven installation configured in Jenkins
         maven 'Maven-3.9.5'
+        SonarQube scanner 'Sonarqube-5.0.1.3006'
     }
     
 
