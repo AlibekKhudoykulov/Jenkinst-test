@@ -28,7 +28,8 @@ pipeline {
        }
         post {
             always {
-                publishCoverage(adapters: [jacocoAdapter('**/jacoco.exec')])
+                junit allowEmptyResults: true, testResults: '**/site/jacoco/jacoco.xml'
+                publishCoverage(adapters: [jacocoAdapter('**/site/jacoco/jacoco.xml')])
             }
         }
 }
