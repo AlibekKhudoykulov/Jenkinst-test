@@ -3,8 +3,9 @@ pipeline {
         tools {
         // Define the name of the Maven installation configured in Jenkins
         maven 'Maven-3.9.5'
-        hudson.plugins.sonar.SonarRunnerInstallation 'sonarqube'
-    }
+         sonarqubeScanner installations: [
+            'Sonarqube' // Replace 'Sonarqube' with your actual SonarQube Scanner installation name
+        ]    }
     
 
     stages{
