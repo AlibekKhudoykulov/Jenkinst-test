@@ -33,6 +33,5 @@ pipeline {
                     sourceFileResolver: sourceFiles('**/src/main/java')
                 )
             }
-
     }
 }
