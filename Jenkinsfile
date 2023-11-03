@@ -28,10 +28,7 @@ pipeline {
        }
         post {
             always {
-                publishCoverage(
-                    adapters: [jacocoAdapter('**/jacoco.exec')],
-                    sourceFileResolver: sourceFiles('**/src/main/java')
-                )
+                publishCoverage(adapters: [jacocoAdapter('**/jacoco.exec')])
             }
-    }
+        }
 }
