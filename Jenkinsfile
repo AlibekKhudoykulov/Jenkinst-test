@@ -3,6 +3,7 @@ pipeline {
         tools {
         // Define the name of the Maven installation configured in Jenkins
         maven 'Maven-3.9.5'
+        sonarqube 'sonarqube-10.2.1'
     }
     
 
@@ -32,4 +33,16 @@ pipeline {
                 publishCoverage(adapters: [jacocoAdapter('**/site/jacoco/jacoco.xml')])
             }
         }
+    
+    post {
+    success {
+        script {
+            // Define SonarQube properties
+            def sonarqubeScannerHome = tool 'SonarQubeScanner' // Use the tool name from Global Tool Configuration
+            withSonarQubeEnv('SonarQubeServer') {
+                bat "${sonarqubeScannerHome}/bin/sonar-scanner" // Execute the SonarQube analysis
+            }
+        }
+    }
+}
 }
