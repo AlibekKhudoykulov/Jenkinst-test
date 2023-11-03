@@ -4,14 +4,14 @@ pipeline {
         stage('Build') {
             steps {
                 // Compile and package the Maven project
-                sh 'mvn clean package'
+                bat 'mvn clean package'
             }
         }
 
         stage('Run Tests') {
             steps {
                 // Execute unit tests using Maven
-                sh 'mvn test'
+                bat 'mvn test'
             }
         }
     }
