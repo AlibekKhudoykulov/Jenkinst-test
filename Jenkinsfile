@@ -32,6 +32,7 @@ pipeline {
              }   
         }
        }
+    }
         post {
             always {
                 junit allowEmptyResults: true, testResults: '**/site/jacoco/jacoco.xml'
@@ -39,5 +40,4 @@ pipeline {
             }
         }
     }
-}
 
