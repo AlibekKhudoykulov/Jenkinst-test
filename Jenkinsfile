@@ -4,9 +4,7 @@ pipeline {
         // Define the name of the Maven installation configured in Jenkins
         maven 'Maven-3.9.5'
     }
-        triggers {
-        pollSCM('*/15 * * * *') // Poll the SCM (Git) every 5 minutes
-    }
+    
 
     stages{
          stage('Checkout') {
