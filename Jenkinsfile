@@ -30,7 +30,7 @@ pipeline {
         stage('Deploy to Tomcat') {
             steps {
                script {
-                        def container = findContainerForContext([Tomcat10xAdapter.class], '/', 'http://localhost:8081', 'root', 'target/*.war')
+                        def container = findContainerForContext([Tomcat8xAdapter.class], '/', 'http://localhost:8081', 'root', 'target/*.war')
                         container.get().deploy(['target/*.war'])
                 }            
             }
