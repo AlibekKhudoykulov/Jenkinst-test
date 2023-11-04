@@ -29,7 +29,10 @@ pipeline {
         }
         stage('Deploy to Tomcat') {
             steps {
-                    deploy adapters: [[$class: 'Tomcat10xAdapter', contextPath: '/', credentialsId: 'root', url: 'http://localhost:8081', war: 'target/*.war']]        
+               script {
+                        def container = findContainerForContext([Tomcat10xAdapter.class], '/', 'http://localhost:8081', 'root', 'target/*.war')
+                        container.get().deploy(['target/*.war'])
+                }            
             }
         }
     }
