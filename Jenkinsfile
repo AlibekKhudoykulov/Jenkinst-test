@@ -29,7 +29,10 @@ pipeline {
         }
         stage('Deploy to Tomcat') {
             steps {
-                deploy adapters: [[$class: 'Tomcat10xAdapter', contextPath: '/', credentialsId: 'root', url: 'http://localhost:8081', path: 'Jenkinst-test/target/Jenkinst-test-1.0-SNAPSHOT.war']]
+                 script {
+                    def warFilePath = findFiles(glob: '**/Jenkinst-test/target/*.war')[0].toString()
+                    deploy adapters: [[$class: 'Tomcat10xAdapter', contextPath: '/', credentialsId: 'root', url: 'http://localhost:8081', war: warFilePath]]
+                }       
             }
         }
     }
