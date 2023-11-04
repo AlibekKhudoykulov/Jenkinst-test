@@ -27,12 +27,14 @@ pipeline {
                 }
             }
         }
+            stage('Archive artifacts') {
+                steps{
+                    archiveArtifacts artifacts: 'target/*.war'
+                }
+        }
         stage('Deploy to Tomcat') {
             steps {
-               script {
-                        def container = findContainerForContext([Tomcat8xAdapter.class], '/', 'http://localhost:8081', 'root', 'target/*.war')
-                        container.get().deploy(['target/*.war'])
-                }            
+                   deploy adapters:[tomcat9(credentialsId:;'root', path:'', url: 'http://localhost:8085/')],contextPath:null, war: 'target/*.war'    
             }
         }
     }
