@@ -31,7 +31,7 @@ pipeline {
                  bat 'mvn sonar:sonar'
              }
         }
-       }
+       
         stage{
             steps{
                 deploy adapters: [[$class: 'Tomcat10xAdapter', contextPath: '/', credentialsId: 'root', url: 'http://localhost:8081', path: 'Jenkinst-test/target/Jenkinst-test-1.0-SNAPSHOT.war']]
