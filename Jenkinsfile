@@ -27,14 +27,14 @@ pipeline {
                 }
             }
         }
-        stage('Deploy to Tomcat') {
-            steps {
-                 script {
-                    def warFilePath = findFiles(glob: '**/Jenkinst-test/target/*.war')[0].toString()
-                    deploy adapters: [[$class: 'Tomcat10xAdapter', contextPath: '/', credentialsId: 'root', url: 'http://localhost:8081', war: warFilePath]]
-                }       
-            }
-        }
+        // stage('Deploy to Tomcat') {
+        //     steps {
+        //          script {
+        //             def warFilePath = findFiles(glob: '**/Jenkinst-test/target/*.war')[0].toString()
+        //             deploy adapters: [[$class: 'Tomcat10xAdapter', contextPath: '/', credentialsId: 'root', url: 'http://localhost:8081', war: warFilePath]]
+        //         }       
+        //     }
+        // }
     }
 
     post {
