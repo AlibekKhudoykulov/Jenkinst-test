@@ -3,7 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <groupId>org.example</groupId>
     <artifactId>Jenkinst-test</artifactId>
@@ -99,6 +99,23 @@
                                 </goals>
                             </execution>
                         </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>3.3.1</version> <!-- Use the latest version of the plugin -->
+
+                        <configuration>
+                            <!--
+                            Specify the location of an existing web.xml or configure automatic generation.
+                            To generate the web.xml in "update" mode (for Servlet 3.0 or later), use:
+                            -->
+                            <failOnMissingWebXml>false</failOnMissingWebXml>
+                            <webXml>src/main/webapp/WEB-INF/web.xml</webXml>
+
+                            <!-- Other Maven WAR Plugin configuration options -->
+
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
