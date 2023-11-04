@@ -31,6 +31,7 @@ pipeline {
                  bat 'mvn sonar:sonar'
              }
         }
+        }
        
         stage{
             steps{
